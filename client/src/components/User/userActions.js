@@ -38,3 +38,8 @@ export const doUserLogin = function (store, loginData) {
       console.log(JSON.parse(response.data))
     })
 }
+
+export const setUserDataFromLocalStorage = function (store, authUser) {
+  var dispatch = store.dispatch
+  dispatch('USER_LOGIN', authUser)
+}
