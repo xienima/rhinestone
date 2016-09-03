@@ -43,3 +43,8 @@ export const setUserDataFromLocalStorage = function (store, authUser) {
   var dispatch = store.dispatch
   dispatch('USER_LOGIN', authUser)
 }
+
+export const doUserLogout = function (store) {
+  var dispatch = store.dispatch
+  dispatch('USER_LOGOUT')
+}

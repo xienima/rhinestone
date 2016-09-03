@@ -1,5 +1,5 @@
 <script>
-  import {setUserDataFromLocalStorage} from './User/userActions'
+  import {setUserDataFromLocalStorage, doUserLogout} from './User/userActions'
 
   export default {
     created () {
@@ -13,12 +13,19 @@
         }
       }
     },
+    methods: {
+      doLogout () {
+        window.localStorage.removeItem('authUser')
+        this.doUserLogout()
+        this.$router.go('/')
+      }
+    },
     vuex: {
       getters: {
         userStore: state => state.userStore
       },
       actions: {
-        setUserDataFromLocalStorage
+        setUserDataFromLocalStorage, doUserLogout
       }
     }
   }
@@ -52,7 +59,7 @@
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+              <li><a href="javascript:void(0)" v-on:click="doLogout()">Logout</a></li>
             </ul>
           </li>
         </ul>
