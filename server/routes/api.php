@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
+    /* Forum API urls */
+	Route::group(['prefix' => 'forum'], function () {
+        Route::post('/', 'ForumController@create');
+	});
+});

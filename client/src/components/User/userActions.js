@@ -1,10 +1,10 @@
 import {loginUrl, userUrl} from './../../config'
-import {clientSecret} from './../../env'
+import {clientSecret, clientId} from './../../env'
 
 export const doUserLogin = function (store, loginData) {
   const postData = {
     grant_type: 'password',
-    client_id: 2,
+    client_id: clientId,
     client_secret: clientSecret,
     username: loginData.username,
     password: loginData.password,

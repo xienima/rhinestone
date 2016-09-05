@@ -21,3 +21,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Forum::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'title' => $faker->sentence,
+        'body' => $faker->paragraphs($nb = 3, $asText = false),
+        'user_id' => 1,
+        'published' => $faker->numberBetween(0,1),
+    ];
+});
