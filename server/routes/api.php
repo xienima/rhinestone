@@ -22,5 +22,6 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
 	Route::group(['prefix' => 'forum'], function () {
         Route::get('/', 'ForumController@get');
         Route::post('/', 'ForumController@create');
+        Route::get('/view/{id}', 'ForumController@getForumById');
 	});
 });

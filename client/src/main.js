@@ -11,6 +11,7 @@ import DashboardPage from './pages/DashboardPage'
 import ForumPage from './pages/ForumPage'
 import Forum from './components/Forum/Forum'
 import ForumAdd from './components/Forum/ForumAdd'
+import ForumView from './components/Forum/ForumView'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -22,6 +23,7 @@ Vue.component('dashboard-page', DashboardPage)
 Vue.component('forum-page', ForumPage)
 Vue.component('forum', Forum)
 Vue.component('forum-add', ForumAdd)
+Vue.component('forum-view', ForumView)
 
 const vue = Vue.extend({
   store
@@ -49,6 +51,10 @@ appRoutes.map({
       '/add': {
         name: 'forum-add',
         component: ForumAdd
+      },
+      '/view/:id': {
+        name: 'forum-view',
+        component: ForumView
       }
     }
   }

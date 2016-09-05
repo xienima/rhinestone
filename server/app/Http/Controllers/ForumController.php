@@ -10,19 +10,19 @@ class ForumController extends Controller
 {
     private $forum;
 
-    public function __construct (Forum $forum)
+    public function __construct(Forum $forum)
     {
         $this->forum = $forum;
     }
 
-    public function get ()
+    public function get()
     {
         $forums = $this->forum->with('user')->get();
 
         return response(['data' => $forums], 200);
     }
 
-    public function create (Request $request)
+    public function create(Request $request)
     {
         $postData = $request->all();
 
@@ -36,5 +36,12 @@ class ForumController extends Controller
         $result = $this->forum->find($forum->id)->with('user')->first();
 
         return response(['data' => $result], 201);
+    }
+
+    public function getForumById($id)
+    {
+        $forum = $this->forum->find($id)->with('user')->first();
+
+        return response(['data' => $forum], 200);
     }
 }

@@ -1,5 +1,6 @@
 const state = {
-  forums: []
+  forums: [],
+  viewForum: {}
 }
 
 const mutations = {
@@ -8,6 +9,9 @@ const mutations = {
   },
   ADD_NEW_FORUM (state, forum) {
     state.forums.push(forum)
+  },
+  GET_FORUM_DATA_BY_ID (state, forum) {
+    state.viewForum = forum
   }
 }
 

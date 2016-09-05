@@ -19,7 +19,11 @@
 
 <template>
   <div id="forum-wrapper">
-    <p><a v-link="{name: 'forum-add'}" class="btn btn-primary">Add new Forum</a></p>
+    <p>
+      <a v-link="{name: 'forum-add'}" class="btn btn-primary">
+        <i class="fa fa-plus"></i> Add new Forum
+      </a>
+    </p>
     <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
@@ -32,7 +36,7 @@
 
       <tbody>
         <tr v-for="forum in forumStore.forums">
-          <td>{{ forum.title }}</td>
+          <td><a v-link="{name: 'forum-view', params: {id: forum.id}}">{{ forum.title }}</a></td>
           <td>{{ forum.user.name }}</td>
           <td>Time ago</td>
           <td>Total post</td>
