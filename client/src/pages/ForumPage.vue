@@ -11,7 +11,7 @@ export default {
   <div id="forum-wrapper">
     <div class="row">
       <div class="col-md-8">
-        <h1 class="page-title">Rhinestone Forum</h1>
+        <h1 class="page-title">Forum</h1>
       </div>
     </div>
     <div class="row">

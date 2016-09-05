@@ -59,7 +59,7 @@
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="javascript:void(0)" v-on:click="doLogout()">Logout</a></li>
+              <li><a href="javascript:void(0)" v-on:click="doLogout()"><i class="fa fa-sign-out"></i> Logout</a></li>
             </ul>
           </li>
         </ul>
