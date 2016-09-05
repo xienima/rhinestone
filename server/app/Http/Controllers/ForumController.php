@@ -40,7 +40,7 @@ class ForumController extends Controller
 
     public function getForumById($id)
     {
-        $forum = $this->forum->find($id)->with('user')->first();
+        $forum = $this->forum->where('id', $id)->with('user')->first();
 
         return response(['data' => $forum], 200);
     }

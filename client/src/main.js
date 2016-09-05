@@ -1,3 +1,4 @@
+import moment from 'moment'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -27,6 +28,10 @@ Vue.component('forum-view', ForumView)
 
 const vue = Vue.extend({
   store
+})
+
+Vue.filter('moment', function (date) {
+  return moment(date).fromNow()
 })
 
 var appRoutes = new VueRouter()

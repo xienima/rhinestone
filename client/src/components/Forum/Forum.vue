@@ -29,7 +29,7 @@
         <tr>
           <th>Title</th>
           <th>Created by</th>
-          <th>Time ago</th>
+          <th>Last activity</th>
           <th>Total post</th>
         </tr>
       </thead>
@@ -38,7 +38,7 @@
         <tr v-for="forum in forumStore.forums">
           <td><a v-link="{name: 'forum-view', params: {id: forum.id}}">{{ forum.title }}</a></td>
           <td>{{ forum.user.name }}</td>
-          <td>Time ago</td>
+          <td>{{ forum.updated_at | moment }}</td>
           <td>Total post</td>
         </tr>
       </tbody>

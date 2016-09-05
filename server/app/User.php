@@ -28,6 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Setting the relation of a User and Forum.
+     *
+     * @return Eloquent model
+     */
     public function forums()
     {
         return $this->hasMany('App\Forum');

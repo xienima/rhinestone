@@ -1,18 +1,7 @@
-import {forumGetAll, forumAddUrl, forumDetails} from './../../config'
-
-/**
- * Define the header which is required for all request
- * as part of the authentioncation token for api
- * validation.
- */
-const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
-const headers = {
-  'Accept': 'application/json',
-  'Authorization': 'Bearer ' + tokenData.access_token
-}
+import {forumGetAll, forumAddUrl, forumDetails, getHeader} from './../../config'
 
 export const getForums = function (store) {
-  this.$http.get(forumGetAll, {headers: headers})
+  this.$http.get(forumGetAll, {headers: getHeader()})
   .then(response => {
     console.log(response)
     var dispatch = store.dispatch
@@ -21,7 +10,7 @@ export const getForums = function (store) {
 }
 
 export const saveNewForum = function (store, forumData) {
-  this.$http.post(forumAddUrl, JSON.stringify(forumData), {headers: headers})
+  this.$http.post(forumAddUrl, JSON.stringify(forumData), {headers: getHeader()})
   .then(response => {
     console.log(response)
     var dispatch = store.dispatch
@@ -32,7 +21,7 @@ export const saveNewForum = function (store, forumData) {
 
 export const getForumById = function (store, id) {
   const url = forumDetails + id
-  this.$http.get(url, {headers: headers})
+  this.$http.get(url, {headers: getHeader()})
   .then(response => {
     console.log(response)
     var dispatch = store.dispatch
