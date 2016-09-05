@@ -1,4 +1,6 @@
 <script>
+  import {saveNewForum} from './forumActions'
+
   export default {
     data () {
       return {
@@ -12,6 +14,13 @@
     methods: {
       handleAddForumSubmit () {
         console.log(this.newForum)
+        this.saveNewForum(this.newForum)
+      }
+    },
+
+    vuex: {
+      actions: {
+        saveNewForum
       }
     }
   }

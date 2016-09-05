@@ -20,6 +20,7 @@ Route::get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
     /* Forum API urls */
 	Route::group(['prefix' => 'forum'], function () {
+        Route::get('/', 'ForumController@get');
         Route::post('/', 'ForumController@create');
 	});
 });

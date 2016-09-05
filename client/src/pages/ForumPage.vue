@@ -19,7 +19,7 @@ export default {
         <router-view></router-view>
       </div>
       <div class="col-md-4">
-        Check
+        <p>This is where Forum Sidebar will come</p>
       </div>
     </div>
   </div>

@@ -1,6 +1,19 @@
 <script>
-  export default {
+  import {getForums} from './forumActions'
 
+  export default {
+    created () {
+      this.getForums()
+    },
+
+    vuex: {
+      getters: {
+        forumStore: state => state.forumStore
+      },
+      actions: {
+        getForums
+      }
+    }
   }
 </script>
 
@@ -16,6 +29,15 @@
           <th>Total post</th>
         </tr>
       </thead>
+
+      <tbody>
+        <tr v-for="forum in forumStore.forums">
+          <td>{{ forum.title }}</td>
+          <td>{{ forum.user.name }}</td>
+          <td>Time ago</td>
+          <td>Total post</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>

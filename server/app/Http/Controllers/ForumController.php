@@ -15,8 +15,26 @@ class ForumController extends Controller
         $this->forum = $forum;
     }
 
+    public function get ()
+    {
+        $forums = $this->forum->with('user')->get();
+
+        return response(['data' => $forums], 200);
+    }
+
     public function create (Request $request)
     {
-        return $request->all();
+        $postData = $request->all();
+
+        $forum = $this->forum->create([
+            'title' => $postData['title'],
+            'body' => $postData['body'],
+            'user_id' => $request->user()->id,
+            'published' => 1
+        ]);
+
+        $result = $this->forum->find($forum->id)->with('user')->first();
+
+        return response(['data' => $result], 201);
     }
 }
