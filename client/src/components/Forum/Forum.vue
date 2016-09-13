@@ -39,7 +39,7 @@
           <td><a v-link="{name: 'forum-view', params: {id: forum.id}}">{{ forum.title }}</a></td>
           <td>{{ forum.user.name }}</td>
           <td>{{ forum.updated_at | moment }}</td>
-          <td>Total post</td>
+          <td>{{ forum.posts.count ? forum.posts.count : 0 }}</td>
         </tr>
       </tbody>
     </table>

@@ -17,7 +17,7 @@ class ForumController extends Controller
 
     public function get()
     {
-        $forums = $this->forum->with('user')->get();
+        $forums = $this->forum->with('user')->with('posts')->get();
 
         return response(['data' => $forums], 200);
     }
