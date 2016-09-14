@@ -6,6 +6,13 @@ $error-color: #f4645f;
 h1, h2, h3, h4, h5, h6, .panel-heading {
   font-family: 'Miriam Libre', sans-serif;
 }
+.error-message {
+  color: $error-color;
+  font-size: .9em;
+}
+span.error-message {
+  display: block;
+}
 .margin-right-10 {
   margin-right: 10px;
 }
