@@ -45,8 +45,8 @@ export const saveForumPost = function (store, post) {
   })
 }
 
-export const getForumPostDetails = function (store) {
-  const url = getPostById + '1'
+export const getForumPostDetails = function (store, postId) {
+  const url = getPostById + postId
   this.$http.get(url, {headers: getHeader()})
   .then(response => {
     console.log(response)

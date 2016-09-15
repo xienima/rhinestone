@@ -29,7 +29,6 @@ const mutations = {
   },
   POST_BY_ID (state, post) {
     _.forEach(state.forums, function (forum, fkey) {
-      console.log('forum', forum.id, post.forum_id)
       if (forum.id === parseInt(post.forum_id)) {
         _.forEach(forum.posts, function (forumPost, pkey) {
           if (forumPost.id === post.id) {

@@ -70,7 +70,7 @@ class ForumController extends Controller
 
     public function getPostById ($id)
     {
-        $post = $this->post->with('comments', 'comments.user')->where('id', 1)->first();
+        $post = $this->post->with('comments', 'comments.user')->where('id', $id)->first();
 
         return response(['data' => $post], 200);
     }
