@@ -1,9 +1,12 @@
 <script>
 import {getForumPostDetails} from './forumActions'
+import Comment from './../Comment/Comment'
 
 export default {
+  components: {
+    Comment
+  },
   created () {
-    console.log('Pull post data', this.$route.params.pid)
     this.getForumPostDetails(this.$route.params.pid)
   },
   vuex: {
@@ -28,6 +31,8 @@ export default {
     </div>
   </div>
   <div class="row">
+
+    <!-- Display the main post content -->
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading main-post">
@@ -38,13 +43,17 @@ export default {
         </div>
       </div>
     </div>
+    <!-- End Display the main post content -->
+
+    <!-- Display comments -->
     <div class="col-sm-10 col-sm-push-1">
-      <div class="panel panel-default" v-for="comment in forumStore.viewPost.comments">
-        <div class="panel-heading comment-title">
-          <span>{{ comment.created_at | moment }}</span>
-          <span class="pull-right">{{ comment.user.name }}</span>
-        </div>
-        <div class="panel-body">{{ comment.body }}</div>
+      <comment :comment="comment" v-for="comment in forumStore.viewPost.comments"></comment>
+    </div>
+    <!-- End Display comments -->
+
+    <div class="row">
+      <div class="col-sm-10 col-sm-push-1">
+
       </div>
     </div>
   </div>
