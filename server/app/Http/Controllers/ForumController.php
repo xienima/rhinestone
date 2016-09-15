@@ -11,6 +11,7 @@ class ForumController extends Controller
 {
     private $forum;
     private $post;
+    private $comment;
 
     public function __construct(Forum $forum, Post $post)
     {
@@ -65,5 +66,12 @@ class ForumController extends Controller
         ]);
 
         return response(['data' => $post], 201);
+    }
+
+    public function getPostById ($id)
+    {
+        $post = $this->post->with('comments', 'comments.user')->where('id', 1)->first();
+
+        return response(['data' => $post], 200);
     }
 }

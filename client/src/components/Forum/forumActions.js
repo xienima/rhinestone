@@ -1,4 +1,11 @@
-import {forumGetAll, forumAddUrl, forumDetails, saveForumPostUrl, getHeader} from './../../config'
+import {
+  forumGetAll,
+  forumAddUrl,
+  forumDetails,
+  saveForumPostUrl,
+  getHeader,
+  getPostById
+} from './../../config'
 
 export const getForums = function (store) {
   this.$http.get(forumGetAll, {headers: getHeader()})
@@ -39,5 +46,11 @@ export const saveForumPost = function (store, post) {
 }
 
 export const getForumPostDetails = function (store) {
-
+  const url = getPostById + '1'
+  this.$http.get(url, {headers: getHeader()})
+  .then(response => {
+    console.log(response)
+    var dispatch = store.dispatch
+    dispatch('POST_BY_ID', response.data.data)
+  })
 }

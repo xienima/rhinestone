@@ -15,4 +15,14 @@ class Post extends Model
         'title', 'body', 'forum_id', 'user_id',
         'published', 'category_id'
     ];
+
+    /**
+     * Define relation between Post and Comments.
+     *
+     * @return Eloquent model
+     */
+    public function comments()
+    {
+        return $this->belongsToMany('App\Comment');
+    }
 }

@@ -24,5 +24,6 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
         Route::post('/', 'ForumController@create');
         Route::get('/view/{id}', 'ForumController@getForumById');
         Route::post('/save/post', 'ForumController@saveForumPost');
+        Route::get('/post/{id}', 'ForumController@getPostById');
 	});
 });
