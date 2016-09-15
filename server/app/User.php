@@ -38,7 +38,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Forum');
     }
 
-    public function comments ()
+    /**
+     * Relation between Users and Comments.
+     *
+     * @return Eloquent model
+     */
+    public function comments()
     {
         return $this->hasMany('App\Comment');
     }

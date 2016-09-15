@@ -38,6 +38,17 @@ const mutations = {
         })
       }
     })
+  },
+  SAVE_FORUM_POST_COMMENT (state, post, comment) {
+    _.forEach(state.forums, function (forum, fkey) {
+      if (forum.id === parseInt(post.forum_id)) {
+        _.forEach(forum.posts, function (forumPost, pkey) {
+          if (forumPost.id === post.id) {
+            state.forums[fkey].posts[pkey].comments.push(comment)
+          }
+        })
+      }
+    })
   }
 }
 

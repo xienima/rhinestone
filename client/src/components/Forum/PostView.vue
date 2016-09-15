@@ -1,10 +1,11 @@
 <script>
 import {getForumPostDetails} from './forumActions'
 import Comment from './../Comment/Comment'
+import CommentAdd from './../Comment/CommentAdd'
 
 export default {
   components: {
-    Comment
+    Comment, CommentAdd
   },
   created () {
     this.getForumPostDetails(this.$route.params.pid)
@@ -51,10 +52,8 @@ export default {
     </div>
     <!-- End Display comments -->
 
-    <div class="row">
-      <div class="col-sm-10 col-sm-push-1">
-
-      </div>
+    <div class="col-sm-10 col-sm-push-1">
+      <comment-add></comment-add>
     </div>
   </div>
 </template>

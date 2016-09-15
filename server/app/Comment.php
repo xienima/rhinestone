@@ -14,6 +14,13 @@ class Comment extends Model
     ];
 
     /**
+     * All of the relationships to be touched.
+     *
+     * @var array
+     */
+    protected $touches = ['posts'];
+
+    /**
      * Define relation between Post and Comment.
      *
      * @return Eloquent model

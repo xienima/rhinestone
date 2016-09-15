@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Forum;
 use App\Http\Controllers\Controller;
 use App\Post;
@@ -13,10 +14,11 @@ class ForumController extends Controller
     private $post;
     private $comment;
 
-    public function __construct(Forum $forum, Post $post)
+    public function __construct(Forum $forum, Post $post, Comment $comment)
     {
         $this->forum = $forum;
         $this->post = $post;
+        $this->comment = $comment;
     }
 
     public function get()
@@ -68,10 +70,27 @@ class ForumController extends Controller
         return response(['data' => $post], 201);
     }
 
-    public function getPostById ($id)
+    public function getPostById($id)
     {
         $post = $this->post->with('comments', 'comments.user')->where('id', $id)->first();
 
         return response(['data' => $post], 200);
+    }
+
+    public function savePostComment(Request $request)
+    {
+        $pid = $request->input('pid');
+        $post = $this->post->with('comments', 'comments.user')->find($pid);
+
+        $comment = $this->comment->create([
+            'body' => $request->input('comment'),
+            'user_id' => $request->user()->id
+        ]);
+
+        $post->comments()->save($comment);
+
+        $comment = $this->comment->with('user')->find($comment->id);
+
+        return response(['data' => ['post' => $post, 'comment' => $comment]], 201);
     }
 }

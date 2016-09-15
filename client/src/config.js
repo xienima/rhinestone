@@ -6,6 +6,7 @@ export const forumAddUrl = apiDomain + 'api/v1/forum'
 export const forumDetails = apiDomain + 'api/v1/forum/view/'
 export const saveForumPostUrl = apiDomain + 'api/v1/forum/save/post'
 export const getPostById = apiDomain + 'api/v1/forum/post/'
+export const savePostCommentUrl = apiDomain + 'api/v1/forum/post/save'
 
 /**
  * This function will take the access token from the local storage

@@ -19,11 +19,12 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
     /* Forum API urls */
-	Route::group(['prefix' => 'forum'], function () {
+    Route::group(['prefix' => 'forum'], function () {
         Route::get('/', 'ForumController@get');
         Route::post('/', 'ForumController@create');
         Route::get('/view/{id}', 'ForumController@getForumById');
         Route::post('/save/post', 'ForumController@saveForumPost');
         Route::get('/post/{id}', 'ForumController@getPostById');
-	});
+        Route::post('/post/save', 'ForumController@savePostComment');
+    });
 });
