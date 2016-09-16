@@ -46,8 +46,17 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a v-link="{name: 'dashboard'}">Dashboard</a></li>
-          <li><a v-link="{name: 'forum'}">Forum</a></li>
+          <li><a v-link="{name: 'dashboard'}"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+          <li><a v-link="{name: 'forum'}"><i class="fa fa-comments"></i> Forum</a></li>
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-product-hunt"></i> Products <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a v-link="{name: 'product-search'}"><i class="fa fa-mobile"></i> View products</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a v-link="{name: 'product-add'}"><i class="fa fa-mobile"></i> Add Mobile</a></li>
+            </ul>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">

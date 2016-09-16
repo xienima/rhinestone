@@ -168,6 +168,7 @@ return [
          */
 
         Laravel\Passport\PassportServiceProvider::class,
+        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
 
         /*
          * Application Service Providers...

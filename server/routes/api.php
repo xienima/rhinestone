@@ -27,4 +27,9 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
         Route::get('/post/{id}', 'ForumController@getPostById');
         Route::post('/post/save', 'ForumController@savePostComment');
     });
+
+    /* Products API urls */
+    Route::group(['prefix' => 'products'], function () {
+        Route::post('/save/mobile', 'ProductController@saveNewMobile');
+    });
 });

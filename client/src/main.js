@@ -15,6 +15,9 @@ import ForumAdd from './components/Forum/ForumAdd'
 import ForumView from './components/Forum/ForumView'
 import PostAdd from './components/Forum/PostAdd'
 import PostView from './components/Forum/PostView'
+import ProductAddForm from './components/Product/ProductAddForm'
+import ProductAdd from './pages/ProductAdd'
+import ProductSearch from './pages/ProductSearch'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -29,6 +32,9 @@ Vue.component('forum-add', ForumAdd)
 Vue.component('forum-view', ForumView)
 Vue.component('post-add', PostAdd)
 Vue.component('post-view', PostView)
+Vue.component('product-add', ProductAdd)
+Vue.component('product-search', ProductSearch)
+Vue.component('product-add-form', ProductAddForm)
 
 const vue = Vue.extend({
   store
@@ -72,6 +78,20 @@ appRoutes.map({
       'post/view/:pid': {
         name: 'view-post',
         component: PostView
+      }
+    }
+  },
+  'products': {
+    name: 'products',
+    component: ProductAdd,
+    subRoutes: {
+      '/add': {
+        name: 'product-add',
+        component: ProductAddForm
+      },
+      '/search': {
+        name: 'product-search',
+        component: ProductSearch
       }
     }
   }
