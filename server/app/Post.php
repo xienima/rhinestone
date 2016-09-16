@@ -17,6 +17,23 @@ class Post extends Model
     ];
 
     /**
+     * Define which modesl to be touched.
+     *
+     * @var array
+     */
+    protected $touches = ['forum'];
+
+    /**
+     * Define relation between Post and Forum.
+     *
+     * @return Eloquent model
+     */
+    public function forum()
+    {
+        return $this->belongsTo('App\Forum');
+    }
+
+    /**
      * Define relation between Post and Comments.
      *
      * @return Eloquent model

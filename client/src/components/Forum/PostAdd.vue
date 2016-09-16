@@ -16,6 +16,7 @@
       savePost () {
         if (this.$addForumPost.valid) {
           this.saveForumPost(this.newPost)
+          this.$router.go({name: 'forum-view', params: {id: this.$route.params.fid}})
         } else {
           console.log('Validation errors', this.$addForumPost)
           this.showErrorMessage = true

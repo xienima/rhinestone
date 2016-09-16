@@ -54,7 +54,10 @@
     <div class="col-md-12">
       <h3>Posts</h3>
       <div class="list-group">
-        <a v-link="{name: 'view-post', params: {pid: post.id}}" class="list-group-item" v-for="post in forumStore.viewForum.posts">
+        <a v-link="{name: 'view-post', params: {pid: post.id}}"
+          class="list-group-item"
+          v-for="post in forumStore.viewForum.posts | orderBy 'updated_at' -1"
+        >
           <h4 class="list-group-item-heading">{{ post.title }}</h4>
           <p class="list-group-item-text">{{ post.body }}</p>
         </a>
