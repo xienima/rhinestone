@@ -30,6 +30,7 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
 
     /* Products API urls */
     Route::group(['prefix' => 'products'], function () {
+        Route::get('/get', 'ProductController@getProducts');
         Route::post('/save/mobile', 'ProductController@saveNewMobile');
     });
 });

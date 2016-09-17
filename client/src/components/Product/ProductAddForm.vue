@@ -18,6 +18,7 @@
       addProduct () {
         if (this.$addproduct.valid) {
           this.saveNewMobile(this.product)
+          this.$router.go('search')
         }
       }
     },
@@ -32,7 +33,7 @@
 <template>
   <!-- <pre>{{ $data | json }}</pre> -->
   <div class="panel panel-default">
-    <div class="panel-heading">Add a new Product <i class="fa fa-product-hunt pull-right"></i></div>
+    <div class="panel-heading">Add a new Mobile <i class="fa fa-product-hunt pull-right"></i></div>
     <div class="panel-body">
       <validator name="addproduct">
         <form v-on:submit.prevent="addProduct()">
@@ -53,8 +54,9 @@
             <select class="form-control" v-model="product.brand">
               <option value="" selected>SELECT</option>
               <option value="Samsung">Samsung</option>
-              <option value="Mi">Mi</option>
               <option value="Lenovo">Lenovo</option>
+              <option value="Mi">Mi</option>
+              <option value="Motorola">Motorola</option>
             </select>
           </div>
 

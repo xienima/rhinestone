@@ -14,6 +14,13 @@ class ProductController extends Controller
     {
         $this->mobile = $mobile;
     }
+
+    public function getProducts()
+    {
+        $products = $this->mobile->orderBy('name')->get();
+        return response(['data' => $products], 200);
+    }
+
     public function saveNewMobile(Request $request)
     {
         $postData = $request->all();
@@ -27,6 +34,6 @@ class ProductController extends Controller
             'features' => ''
         ]);
 
-        return response(['data' => $mobile], 200);
+        return response(['data' => $mobile], 201);
     }
 }

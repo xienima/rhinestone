@@ -1,6 +1,7 @@
 import {
   getHeader,
-  saveProductMobileUrl
+  saveProductMobileUrl,
+  getProductsUrl
 } from './../../config'
 
 export const saveNewMobile = function (store, mobileData) {
@@ -9,5 +10,14 @@ export const saveNewMobile = function (store, mobileData) {
     console.log(response)
     // var dispatch = store.dispatch
     // dispatch('ADD_NEW_FORUM', response.data.data)
+  })
+}
+
+export const getProducts = function (store) {
+  this.$http.get(getProductsUrl, {headers: getHeader()})
+  .then(response => {
+    console.log(response)
+    var dispatch = store.dispatch
+    dispatch('LOAD_PRODUCTS', response.data.data)
   })
 }
