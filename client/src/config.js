@@ -9,6 +9,7 @@ export const getPostById = apiDomain + 'api/v1/forum/post/'
 export const savePostCommentUrl = apiDomain + 'api/v1/forum/post/save'
 export const saveProductMobileUrl = apiDomain + 'api/v1/products/save/mobile'
 export const getProductsUrl = apiDomain + 'api/v1/products/get'
+export const getProductDetailsUrl = apiDomain + 'api/v1/products/view/'
 
 /**
  * This function will take the access token from the local storage

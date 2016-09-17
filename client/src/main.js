@@ -18,12 +18,15 @@ import PostView from './components/Forum/PostView'
 import ProductAddForm from './components/Product/ProductAddForm'
 import ProductAdd from './pages/ProductAdd'
 import ProductSearch from './pages/ProductSearch'
+import ProductDetailsPage from './pages/ProductDetailsPage'
+import InfoBox from './components/Widgets/InfoBox'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.use(VueValidator)
 Vue.component('app', App)
 Vue.component('menu', Menu)
+Vue.component('info-box', InfoBox)
 Vue.component('login-page', LoginPage)
 Vue.component('dashboard-page', DashboardPage)
 Vue.component('forum-page', ForumPage)
@@ -35,6 +38,7 @@ Vue.component('post-view', PostView)
 Vue.component('product-add', ProductAdd)
 Vue.component('product-search', ProductSearch)
 Vue.component('product-add-form', ProductAddForm)
+Vue.component('product-details-page', ProductDetailsPage)
 
 const vue = Vue.extend({
   store
@@ -92,6 +96,10 @@ appRoutes.map({
       '/search': {
         name: 'product-search',
         component: ProductSearch
+      },
+      '/view/:id': {
+        name: 'product-details',
+        component: ProductDetailsPage
       }
     }
   }

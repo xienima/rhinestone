@@ -1,7 +1,8 @@
 import {
   getHeader,
   saveProductMobileUrl,
-  getProductsUrl
+  getProductsUrl,
+  getProductDetailsUrl
 } from './../../config'
 
 export const saveNewMobile = function (store, mobileData) {
@@ -19,5 +20,13 @@ export const getProducts = function (store) {
     console.log(response)
     var dispatch = store.dispatch
     dispatch('LOAD_PRODUCTS', response.data.data)
+  })
+}
+
+export const getProductDetails = function (store, pId) {
+  const url = getProductDetailsUrl + pId
+  this.$http.get(url)
+  .then(response => {
+    console.log(response.data.data)
   })
 }

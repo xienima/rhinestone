@@ -36,4 +36,10 @@ class ProductController extends Controller
 
         return response(['data' => $mobile], 201);
     }
+
+    public function viewProductDetails ($id)
+    {
+        $product = $this->mobile->where('id', $id)->first();
+        return response(['data' => $product], 200);
+    }
 }
