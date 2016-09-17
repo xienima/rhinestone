@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Mobile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -40,6 +41,9 @@ class ProductController extends Controller
     public function viewProductDetails ($id)
     {
         $product = $this->mobile->where('id', $id)->first();
+
+        DB::table('product_views')->insert(['product_id' => $product->id, 'views' => 1]);
+
         return response(['data' => $product], 200);
     }
 }

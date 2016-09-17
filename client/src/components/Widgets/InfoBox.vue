@@ -1,17 +1,18 @@
 <script>
   export default {
-    props: ['data']
+    props: ['bg', 'icon', 'title', 'count', 'unit']
   }
 </script>
 
 <template>
+  <!-- <pre>{{ count | json }}</pre> -->
   <div class="info-box">
-    <span class="info-box-icon {{data.bg}}">
-      <i class="{{data.icon}}"></i>
+    <span class="info-box-icon {{bg}}">
+      <i class="{{icon}}"></i>
     </span>
     <div class="info-box-content">
-      <span class="info-box-text">{{ data.title }}</span>
-      <span class="info-box-number">{{ data.count }}<small v-if="data.percent">%</small></span>
+      <span class="info-box-text">{{ title }}</span>
+      <span class="info-box-number">{{ count }} <small>{{ unit }}</small></span>
     </div>
   </div>
 </template>

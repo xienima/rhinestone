@@ -18,6 +18,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
+    /* Dashboard API */
+    Route::get('/dashboard-data', 'DashboardController@getDashboardData');
+
     /* Forum API urls */
     Route::group(['prefix' => 'forum'], function () {
         Route::get('/', 'ForumController@get');

@@ -92,7 +92,7 @@
         <button class="btn btn-primary btn-xs" v-on:click="results = []">Clear search</button>
       </p>
       <div class="list-group search-result">
-        <a href="#" class="list-group-item" v-for="item in results">
+        <a v-link="{name: 'product-details', params: {id: item.id}}" class="list-group-item" v-for="item in results">
           <h4 class="list-group-item-heading">{{{ item._highlightResult.name.value }}}</h4>
           <p class="list-group-item-text">
             <strong>OS:</strong> {{item.os}} <br>

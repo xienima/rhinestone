@@ -9,12 +9,12 @@
     <!-- Card start -->
     <div class="col-sm-2">
       <div class="thumbnail" style="padding: 0;">
-        <a href="#">
-          <img src="http://placehold.it/500x250/EEE" height="127" width="254">
-        </a>
+
+        <a v-link="{name: 'product-details', params: {id: product.id}}"><img src="http://placehold.it/500x250/EEE" height="127" width="254"></a>
+
         <div class="caption">
             <h4>
-              <a href="#">{{product.name}}</a>
+              <a v-link="{name: 'product-details', params: {id: product.id}}">{{product.name}}</a>
             </h4>
             <div class="description">
               <p>
@@ -27,7 +27,10 @@
               <i class="fa fa-trash"></i>
             </a>
             <a href="#" class="btn btn-info btn-xs" role="button">Button</a>
-            <a href="#" class="btn btn-default btn-xs" role="button">Button</a>
+            <a href="#" class="btn btn-default btn-xs" role="button">
+              <span v-if="product.views > 0"><i class="ion ion-eye"></i> {{product.views}}</span>
+              <span v-if="product.views < 1">Not viewed</span>
+            </a>
         </div>
       </div>
     </div>

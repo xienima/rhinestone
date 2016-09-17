@@ -1,6 +1,7 @@
 export const apiDomain = 'http://localhost:8000/'
 export const loginUrl = apiDomain + 'oauth/token'
 export const userUrl = apiDomain + 'api/user'
+export const dashDataUrl = apiDomain + 'api/v1/dashboard-data'
 export const forumGetAll = apiDomain + 'api/v1/forum'
 export const forumAddUrl = apiDomain + 'api/v1/forum'
 export const forumDetails = apiDomain + 'api/v1/forum/view/'
