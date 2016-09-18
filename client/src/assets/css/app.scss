@@ -32,8 +32,19 @@ h1.page-title {
     font-size: 1.2em;
   }
 }
-.container-fluid {
-  /*background-color: #ecf0f5;*/
+.navbar-default {
+  background-color: #3c8dbc;
+  border-color: #367fa9;
+  color: #fff;
+  .navbar-nav > li > a {
+    color: #fff;
+  }
+  .navbar-nav > li > a.v-link-active {
+    color: #333333;
+  },
+  .navbar-brand {
+    color: #fff;
+  }
 }
 .bg-aqua {
   background-color: #00c0ef !important;

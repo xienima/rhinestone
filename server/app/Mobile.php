@@ -15,6 +15,10 @@ class Mobile extends Model
         'publish'
     ];
 
+    public $algoliaSettings = [
+        'attributesToIndex' => ['brand', 'os', 'price', 'name']
+    ];
+
     protected $appends = ['views'];
 
     public function getViewsAttribute()

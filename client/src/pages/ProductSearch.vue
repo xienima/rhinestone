@@ -24,7 +24,10 @@
       search () {
         if (this.query !== '') {
           console.log(this.query)
-          this.index.search(this.query, function (error, results) {
+          this.index.search(this.query, {
+            'facets': '*',
+            'facetFilters': []
+          }, function (error, results) {
             if (results.hits.length > 0) {
               this.results = results.hits
             } else {
