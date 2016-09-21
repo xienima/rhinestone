@@ -35,6 +35,7 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'products'], function () {
         Route::get('/get', 'ProductController@getProducts');
         Route::get('/view/{id}', 'ProductController@viewProductDetails');
+        Route::get('/facets', 'ProductController@getProductFacets');
         Route::post('/save/mobile', 'ProductController@saveNewMobile');
     });
 });

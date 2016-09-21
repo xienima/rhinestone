@@ -2,7 +2,8 @@ import {
   getHeader,
   saveProductMobileUrl,
   getProductsUrl,
-  getProductDetailsUrl
+  getProductDetailsUrl,
+  getProductFacetsUrl
 } from './../../config'
 
 export const saveNewMobile = function (store, mobileData) {
@@ -17,7 +18,7 @@ export const saveNewMobile = function (store, mobileData) {
 export const getProducts = function (store) {
   this.$http.get(getProductsUrl, {headers: getHeader()})
   .then(response => {
-    console.log(response)
+    // console.log(response)
     var dispatch = store.dispatch
     dispatch('LOAD_PRODUCTS', response.data.data)
   })
@@ -27,8 +28,17 @@ export const getProductDetails = function (store, pId) {
   const url = getProductDetailsUrl + pId
   this.$http.get(url, {headers: getHeader()})
   .then(response => {
-    console.log(response.data.data)
+    // console.log(response.data.data)
     var dispatch = store.dispatch
     dispatch('SET_CURRENT_PRODUCT', response.data.data)
+  })
+}
+
+export const getProductFacets = function (store) {
+  this.$http.get(getProductFacetsUrl, {headers: getHeader()})
+  .then(response => {
+    // console.log(response.data.data)
+    var dispatch = store.dispatch
+    dispatch('SET_CURRENT_FACETS', response.data.data)
   })
 }

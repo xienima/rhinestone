@@ -1,7 +1,7 @@
 <script>
   import algoliasearch from 'algoliasearch'
   import ProductSingle from './../components/Product/ProductSingle'
-  import {getProducts} from './../components/Product/productActions'
+  import {getProducts, getProductFacets} from './../components/Product/productActions'
   import {algoliaAppId, algoliaApiKey} from './../env'
 
   export default {
@@ -12,6 +12,7 @@
       this.client = algoliasearch(algoliaAppId, algoliaApiKey)
       this.index = this.client.initIndex('mobiles')
       this.getProducts()
+      this.getProductFacets()
     },
     data () {
       return {
@@ -23,11 +24,12 @@
     methods: {
       search () {
         if (this.query !== '') {
-          console.log(this.query)
+          // console.log(this.query)
           this.index.search(this.query, {
             'facets': '*',
             'facetFilters': []
           }, function (error, results) {
+            console.log('results', results)
             if (results.hits.length > 0) {
               this.results = results.hits
             } else {
@@ -44,7 +46,7 @@
         productStore: state => state.productStore
       },
       actions: {
-        getProducts
+        getProducts, getProductFacets
       }
     }
   }
@@ -78,18 +80,76 @@
     </div>
   </div>
 
-  <div class="row" v-if="results.length == 0">
-    <div class="col-md-12">
+  <div class="col-md-3">
+    <h3> </h3>
+    <div class="panel panel-default">
+      <div class="panel-heading">Brands</div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item" v-for="(index, value) in productStore.facets.brand">
+            <span class="badge">{{ value }}</span>
+            {{ index }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">OS</div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item" v-for="(index, value) in productStore.facets.os">
+            <span class="badge">{{ value }}</span>
+            {{ index }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <!-- Show products -->
+    <div class="row">
+      <div class="col-md-12" v-if="results.length == 0">
+        <h3>Products</h3>
+        <div class="product-item" v-for="product in productStore.products">
+          <product-single :product="product"></product-single>
+        </div>
+      </div>
+    </div>
+
+    <!-- Show search results -->
+    <div class="row">
+      <div class="col-md-12" v-if="results.length > 0">
+        <p>
+          {{ results.length }} results found.
+          <button class="btn btn-primary btn-xs" v-on:click="results = []">Clear search</button>
+        </p>
+        <div class="list-group search-result">
+          <a v-link="{name: 'product-details', params: {id: item.id}}" class="list-group-item" v-for="item in results">
+            <h4 class="list-group-item-heading">{{{ item._highlightResult.name.value }}}</h4>
+            <p class="list-group-item-text">
+              <strong>OS:</strong> {{item.os}} <br>
+              <strong>Brand:</strong> {{item.brand}} <br>
+              <strong>Price:</strong> {{item.price}}
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row" v-if="results.length == 0">
+    <div class="col-md-12" v-if="results.length == 0">
       <h3>Products</h3>
       <div class="product-item" v-for="product in productStore.products">
         <product-single :product="product"></product-single>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="row" v-if="results.length > 0">
-    <div class="col-md-12">
-      <!-- <pre>{{ results | json }}</pre> -->
+  <!-- <div class="row">
+    <div class="col-md-12" v-if="results.length > 0">
       <p>
         {{ results.length }} results found.
         <button class="btn btn-primary btn-xs" v-on:click="results = []">Clear search</button>
@@ -105,7 +165,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style lang="scss">

@@ -1,6 +1,11 @@
 const state = {
   products: [],
-  currentProduct: {}
+  currentProduct: {},
+  facets: {
+    brand: {},
+    os: {},
+    price: {}
+  }
 }
 
 const mutations = {
@@ -9,6 +14,11 @@ const mutations = {
   },
   SET_CURRENT_PRODUCT (state, product) {
     state.currentProduct = product
+  },
+  SET_CURRENT_FACETS (state, facetData) {
+    state.facets.brand = facetData.brand
+    state.facets.os = facetData.os
+    state.facets.price = facetData.price
   }
 }
 

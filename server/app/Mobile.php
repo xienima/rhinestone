@@ -16,7 +16,8 @@ class Mobile extends Model
     ];
 
     public $algoliaSettings = [
-        'attributesToIndex' => ['brand', 'os', 'price', 'name']
+        'attributesToIndex' => ['brand', 'os', 'price', 'name'],
+        'attributesForFaceting' => ['brand', 'os', 'price'],
     ];
 
     protected $appends = ['views'];
