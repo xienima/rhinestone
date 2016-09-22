@@ -1,6 +1,7 @@
 const state = {
   products: [],
   currentProduct: {},
+  searchResult: [],
   facets: {
     brand: {},
     os: {},
@@ -19,6 +20,9 @@ const mutations = {
     state.facets.brand = facetData.brand
     state.facets.os = facetData.os
     state.facets.price = facetData.price
+  },
+  SET_SEARCH_RESULTS (state, searchResult) {
+    state.searchResult = searchResult
   }
 }
 

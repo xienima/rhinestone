@@ -42,3 +42,13 @@ export const getProductFacets = function (store) {
     dispatch('SET_CURRENT_FACETS', response.data.data)
   })
 }
+
+export const setProductFacetsFromSearch = function (store, facets) {
+  var dispatch = store.dispatch
+  dispatch('SET_CURRENT_FACETS', facets)
+}
+
+export const setProductSearchResult = function (store, result) {
+  var dispatch = store.dispatch
+  dispatch('SET_SEARCH_RESULTS', result)
+}

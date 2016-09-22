@@ -6,6 +6,9 @@ $error-color: #f4645f;
 h1, h2, h3, h4, h5, h6, .panel-heading {
   font-family: 'Miriam Libre', sans-serif;
 }
+.cursor {
+  cursor: pointer;
+}
 .error-message {
   color: $error-color;
   font-size: .9em;
