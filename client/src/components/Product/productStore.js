@@ -2,6 +2,7 @@ const state = {
   products: [],
   currentProduct: {},
   searchResult: [],
+  initTemp: false,
   tempFacets: {
     brand: {},
     os: {},
@@ -30,9 +31,13 @@ const mutations = {
     state.searchResult = searchResult
   },
   SET_INIT_TEMP_FACETS (state, facetData) {
-    state.tempFacets.brand = facetData.brand
-    state.tempFacets.os = facetData.os
-    state.tempFacets.price = facetData.price
+    if (state.initTemp === false) {
+      console.log('init temp facets')
+      state.tempFacets.brand = facetData.brand
+      state.tempFacets.os = facetData.os
+      state.tempFacets.price = facetData.price
+      state.initTemp = !state.initTemp
+    }
   },
   SWAP_PRODUCT_FACETD_WITH_TEMP (state) {
     state.facets = state.tempFacets

@@ -47,6 +47,11 @@ export const setProductFacetsFromSearch = function (store, facets) {
   dispatch('SET_CURRENT_FACETS', facets)
 }
 
+export const initTempFacets = function (store) {
+  var dispatch = store.dispatch
+  dispatch('SET_INIT_TEMP_FACETS')
+}
+
 export const setProductSearchResult = function (store, result) {
   var dispatch = store.dispatch
   dispatch('SET_SEARCH_RESULTS', result)

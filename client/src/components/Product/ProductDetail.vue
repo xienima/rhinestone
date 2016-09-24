@@ -5,9 +5,12 @@
 </script>
 
 <template>
-  <div class="panel panel-default">
-    <div class="panel-heading">View product details <span class="pull-right">Viewed {{ data.views }} times</span></div>
-    <div class="panel-body">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">View product details <span class="pull-right">Viewed {{ data.views }} times</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
       <div class="col-md-6">
         <h2>{{ data.name }}</h2>
       </div>
@@ -17,6 +20,7 @@
         <h3 class="product-price">Rs {{ data.price }}</h3>
       </div>
     </div>
+    <!-- /.box-body -->
   </div>
 </template>
 
