@@ -10,8 +10,6 @@ export const saveNewMobile = function (store, mobileData) {
   this.$http.post(saveProductMobileUrl, JSON.stringify(mobileData), {headers: getHeader()})
   .then(response => {
     console.log(response)
-    // var dispatch = store.dispatch
-    // dispatch('ADD_NEW_FORUM', response.data.data)
   })
 }
 
@@ -40,6 +38,7 @@ export const getProductFacets = function (store) {
     // console.log(response.data.data)
     var dispatch = store.dispatch
     dispatch('SET_CURRENT_FACETS', response.data.data)
+    dispatch('SET_INIT_TEMP_FACETS', response.data.data)
   })
 }
 
@@ -51,4 +50,9 @@ export const setProductFacetsFromSearch = function (store, facets) {
 export const setProductSearchResult = function (store, result) {
   var dispatch = store.dispatch
   dispatch('SET_SEARCH_RESULTS', result)
+}
+
+export const swapProductFacetsDataWithTemp = function (store) {
+  var dispatch = store.dispatch
+  dispatch('SWAP_PRODUCT_FACETD_WITH_TEMP')
 }

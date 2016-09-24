@@ -1,7 +1,13 @@
 <script>
+  import {
+    getProducts,
+    getProductFacets,
+    setProductFacetsFromSearch,
+    setProductSearchResult,
+    swapProductFacetsDataWithTemp
+  } from './../components/Product/productActions'
   import algoliasearch from 'algoliasearch'
   import ProductSingle from './../components/Product/ProductSingle'
-  import {getProducts, getProductFacets, setProductFacetsFromSearch, setProductSearchResult} from './../components/Product/productActions'
   import {algoliaAppId, algoliaApiKey} from './../env'
 
   export default {
@@ -57,6 +63,10 @@
         console.log(string)
         this.facetFilters.push(string)
         this.search()
+      },
+      clearSearch () {
+        this.setProductSearchResult([])
+        this.swapProductFacetsDataWithTemp()
       }
     },
     vuex: {
@@ -64,7 +74,11 @@
         productStore: state => state.productStore
       },
       actions: {
-        getProducts, getProductFacets, setProductFacetsFromSearch, setProductSearchResult
+        getProducts,
+        getProductFacets,
+        setProductFacetsFromSearch,
+        setProductSearchResult,
+        swapProductFacetsDataWithTemp
       }
     }
   }
@@ -141,7 +155,7 @@
       <div class="col-md-12" v-if="productStore.searchResult.length > 0">
         <p>
           {{ productStore.searchResult.length }} results found.
-          <button class="btn btn-primary btn-xs" v-on:click="setProductSearchResult([])">Clear search</button>
+          <button class="btn btn-primary btn-xs" v-on:click="clearSearch()">Clear search</button>
         </p>
         <div class="list-group search-result">
           <a v-link="{name: 'product-details', params: {id: item.id}}" class="list-group-item" v-for="item in productStore.searchResult">

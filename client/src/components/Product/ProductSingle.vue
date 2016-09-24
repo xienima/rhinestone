@@ -7,7 +7,7 @@
 <template>
   <div class="single-product-wrapper">
     <!-- Card start -->
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       <div class="thumbnail" style="padding: 0;">
 
         <a v-link="{name: 'product-details', params: {id: product.id}}"><img src="http://placehold.it/500x250/EEE" height="127" width="254"></a>
